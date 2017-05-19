@@ -1,0 +1,547 @@
+version: 1
+
+dn: dc=fictional,dc=com
+objectClass: top
+objectClass: domain
+objectClass: extensibleObject
+dc: fictional
+
+#Two base OU's one for groups and one for users
+#All users will live in the same OU and will have their group membership set to whatever group
+
+dn: ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: Groups
+
+dn: ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: organizationalUnit
+ou: Users
+
+#Functional groups
+
+dn: cn=hcmAdmin,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmAdmin
+uniquemember: uid=csaadmin,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmServiceDesigner,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmServiceDesigner
+uniquemember: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmApplicationArchitect,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmApplicationArchitect
+uniquemember: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmApplicationQA,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmApplicationQA
+uniquemember: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmApplicationDeveloper,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmApplicationDeveloper
+uniquemember: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmApplicationReleaseManager,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmApplicationReleaseManager
+uniquemember: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmServiceConsumer,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmServiceConsumer
+uniquemember: uid=sales_windows_user1,ou=Users,dc=fictional,dc=com
+uniquemember: uid=sales_linux_user1,ou=Users,dc=fictional,dc=com
+uniquemember: uid=mkt_user1,ou=Users,dc=fictional,dc=com
+uniquemember: uid=mkt_user2,ou=Users,dc=fictional,dc=com
+uniquemember: uid=consumer,ou=Users,dc=fictional,dc=com
+uniquemember: uid=manager,ou=Users,dc=fictional,dc=com
+uniquemember: uid=consumergui,ou=Users,dc=fictional,dc=com
+uniquemember: uid=engg_user1,ou=Users,dc=fictional,dc=com
+uniquemember: uid=engg_user2,ou=Users,dc=fictional,dc=com
+uniquemember: uid=csladmin,ou=Users,dc=fictional,dc=com
+uniquemember: uid=sales_user1,ou=Users,dc=fictional,dc=com
+uniquemember: uid=sales_user2,ou=Users,dc=fictional,dc=com
+
+
+dn: cn=hcmResourceSupplyManager,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmResourceSupplyManager
+uniquemember: uid=ressupplymgr,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmConsumerServiceAdministrator,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmConsumerServiceAdministrator
+uniquemember: uid=consvcadmin,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmServiceBusinessManager,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmServiceBusinessManager
+uniquemember: uid=svcbismgr,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmNoConGroup,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmNoConGroup
+uniquemember: uid=nocongroup,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmManagerGroup,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmManagerGroup
+uniquemember: uid=manager,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmNoCSAGroup,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmNoCSAGroup
+uniquemember: uid=nocsagroup,ou=Users,dc=fictional,dc=com
+
+dn: cn=hcmServiceAdmin,ou=Groups,dc=fictional,dc=com
+objectClass: top
+objectClass: groupOfUniqueNames
+cn: hcmServiceAdmin
+uniquemember: uid=sales_admin1,ou=Users,dc=fictional,dc=com
+
+
+
+
+#User accounts
+dn: uid=csaadmin,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: csaadmin
+sn: csaadmin
+uid: csaadmin
+givenname: csaadmin
+mail: csaadmin@fictional.com
+member: cn=hcmAdmin,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=svcdesigner,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Service Designer
+sn: Service Designer
+uid: svcdesigner
+givenname: svcdesigner
+mail: svcdesigner@fictional.com
+member: cn=hcmServiceDesigner,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=consumergui,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Consumer GUI User
+sn: consumergui
+uid: consumergui
+givenname: consumergui
+mail: consumergui@con.fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=consumer,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Consumer A User
+sn: consumerA
+uid: consumer
+givenname: consumer
+mail: consumer@fictional.com
+manager: uid=manager,ou=Users,dc=fictional,dc=com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=engg_user1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Engineering User
+sn: engineering consumer
+uid: engg_user1
+givenname: engg_user1
+mail: engg_user1@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=nocsagroup,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: No CSA Group User
+sn: nocsagroup
+uid: nocsagroup
+givenname: No CSA Group
+mail: nocsagroup@fictional.com
+manager: uid=manager,ou=Users,dc=fictional,dc=com
+member: cn=NoCSAGroup,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=nogroup,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: No Group User
+sn: nogroup
+uid: nogroup
+givenname: No Group
+mail: nogroup@fictional.com
+userpassword: HPES0ftware!
+
+dn: uid=svcbismgr,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: CSA Service Business Manager User
+sn: svcbismgr
+uid: svcbismgr
+givenname: CSA Service Business Manager
+mail: svcbismgr@fictional.com
+manager: uid=manager,ou=Users,dc=fictional,dc=com
+member: cn=ServiceBusinessManager,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=manager,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: CSA Manager User
+sn: manager
+uid: manager
+givenname: CSA Manager
+mail: manager@fictional.com
+member: cn=ManagerGroup,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=consvcadmin,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: CSA Consumer Service Manager User
+sn: consvcadmin
+uid: consvcadmin
+givenname: CSA Consumer Service Manger
+mail: consvcadmin@fictional.com
+manager: uid=manager,ou=Users,dc=fictional,dc=com
+member: cn=ConsumerServiceAdministrator,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=ressupplymgr,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: CSA Resource Supply Admin User
+sn: ressupplymgr
+uid: ressupplymgr
+givenname: CSA Resource Supply Admin
+mail: ressupplymgr@fictional.com
+manager: uid=manager,ou=Users,dc=fictional,dc=com
+member: cn=ResourceSupplyManager,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=nocongroup,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: No Consumer Group User
+sn: nocongroup
+uid: nocongroup
+givenname: nocongroup
+mail: nocongroup@con.fictional.com
+member: cn=NoConGroup,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_user1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_user1
+givenname: sales_user1
+mail: sales_user1@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=mkt_user2,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Marketing User
+sn: marketing consumer
+uid: mkt_user2
+givenname: mkt_user2
+mail: mkt_user2@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=engg_user2,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Engineering User
+sn: engineering consumer
+uid: engg_user2
+givenname: engg_user2
+mail: engg_user2@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=mkt_user1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Marketing User
+sn: marketing consumer
+uid: mkt_user1
+givenname: mkt_user1
+mail: mkt_user1@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_user2,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_user2
+givenname: sales_user2
+mail: sales_user2@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=engg_mgr,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Engineering User
+sn: engineering consumer
+uid: engg_mgr
+givenname: engg_mgr
+mail: engg_mgr@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=mkt_mgr,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Marketing User
+sn: marketing consumer
+uid: mkt_mgr
+givenname: mkt_mgr
+mail: mkt_mgr@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_mgr,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_mgr
+givenname: sales_mgr
+mail: sales_mgr@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=csladmin,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Engineering User
+sn: engineering consumer
+uid: csladmin
+givenname: csladmin
+mail: csladmin@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=andy,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Application Architect
+sn: Application Architect
+uid: andy
+givenname: Andy
+mail: andy@fictional.com
+member: cn=ApplicationArchitect,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=david,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Application Developer
+sn: Application Developer
+uid: david
+givenname: David
+mail: david@fictional.com
+member: cn=ApplicationDeveloper,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=nancy,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Application Developer
+sn: Application Developer
+uid: nancy
+givenname: Nancy
+mail: nancy@fictional.com
+member: cn=ApplicationQA,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=robert,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Application Release Manager
+sn: Application Release Manager
+uid: robert
+givenname: Robert
+mail: robert@fictional.com
+member: cn=ApplicationReleaseManager,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_linux_user1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_linux_user1
+givenname: sales_linux_user1
+mail: sales_linux_user1@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_windows_user1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_windows_user1
+givenname: sales_windows_user1
+mail: sales_windows_user1@fictional.com
+member: cn=ServiceConsumer,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
+dn: uid=sales_admin1,ou=Users,dc=fictional,dc=com
+objectClass: top
+objectClass: inetOrgPerson
+objectClass: uidObject
+objectClass: extensibleObject
+objectClass: person
+objectClass: organizationalPerson
+cn: Sales User
+sn: Sales consumer
+uid: sales_admin1
+givenname: sales_admin1
+mail: sales_admin1@fictional.com
+member: cn=ServiceAdmin,ou=Groups,dc=fictional,dc=com
+userpassword: HPES0ftware!
+
