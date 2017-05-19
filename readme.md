@@ -10,8 +10,8 @@ Started openldap through a script
 docker run --name openldap \
 --restart=unless-stopped \
 -p 389:389 \
--v /root/containerdata/openldap/database=/var/lib/ldap \
--v /root/containerdata/openldap/config=/etc/ldap/slapd.d \
+-v /root/containerdata/openldap/database:/var/lib/ldap \
+-v /root/containerdata/openldap/config:/etc/ldap/slapd.d \
 -e LDAP_ORGANISATION="Fictional" \
 -e LDAP_DOMAIN="fictional.com" \
 -e LDAP_ADMIN_PASSWORD="HPES0ftware!" \
